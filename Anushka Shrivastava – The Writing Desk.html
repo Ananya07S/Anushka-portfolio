@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Anushka Shrivastava – The Writing Desk</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--card:#F5F5F5;--ink:#000000;--soft:#2B2B2B;--line:#D9D9D9;--rust:#8C3B28;--gold:#D4A62A;--band:#1A1716;--band-ink:#F5EFE6;--band-soft:#B5ACA0;--rule:#1A1716;color-scheme:light;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Instrument Sans",system-ui,Arial,sans-serif;font-size:1.05rem;line-height:1.7;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:#1A1716;z-index:30}
+.mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.22em;font-size:.78rem}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;margin:0;line-height:1.05;letter-spacing:-.01em}
+a{color:inherit}:focus-visible{outline:2px solid var(--rust);outline-offset:3px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 1.5rem}
+
+.date{background:#1A1716;color:#F5EFE6;padding:.95rem 1.5rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.2em}
+header.mast{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+header.mast .wrap{display:flex;align-items:center;gap:1rem;height:72px}
+.logo{display:grid;place-items:center;width:44px;height:44px;background:#1A1716;color:#fff;font:500 1.7rem "Instrument Sans",sans-serif;position:relative;text-decoration:none;flex:none}
+.logo::after{content:"";position:absolute;right:7px;top:7px;width:5px;height:5px;border-radius:50%;background:#D9603B}
+.brand{font:500 1.8rem "Cormorant Garamond",serif;text-decoration:none;white-space:nowrap}
+.mast nav{margin-left:auto;display:flex;gap:1.5rem}
+.mast nav a{text-decoration:none;color:var(--soft)}.mast nav a:hover{color:var(--rust)}
+@media(max-width:700px){.mast nav{display:none}.brand{font-size:1.6rem}}
+
+.hero{padding:3.2rem 0 2.6rem}
+.meta{display:grid;grid-template-columns:1fr 1fr;gap:1rem;color:var(--soft);max-width:34rem;margin-bottom:3rem}
+h1{font-size:clamp(3rem,6vw,5.4rem);max-width:12ch}
+h1 em{color:var(--rust);font-weight:400}
+.hero-title{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(1.2rem,4vw,3rem);align-items:center}
+.hero-image{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+@media(max-width:640px){.hero-title{grid-template-columns:1fr}}
+.lede{font-size:1.25rem;color:var(--soft);max-width:36rem;margin:2.2rem 0 0}
+.btns{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+.btn{text-decoration:none;padding:.85rem 1.5rem;border:1px solid var(--ink);color:var(--ink)}
+.btn.fill{background:var(--ink);color:var(--bg)}
+.btn:hover{background:var(--rust);border-color:var(--rust);color:#fff}
+.substack-dialog{width:min(440px,calc(100% - 2rem));max-width:none;padding:2rem;border:1px solid var(--line);background:var(--bg);color:var(--ink);box-shadow:0 20px 70px rgba(0,0,0,.3)}
+.substack-dialog::backdrop{background:rgba(12,10,9,.68)}
+.substack-dialog-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.substack-dialog h2{font-size:2.4rem}
+.substack-dialog-close{border:0;background:none;color:var(--ink);font:inherit;font-size:1.8rem;line-height:1;cursor:pointer}
+.substack-dialog-links{display:grid;gap:.7rem;margin-top:1.5rem}
+.substack-dialog-links a{display:flex;justify-content:space-between;gap:1rem;padding:1rem;border:1px solid var(--line);text-decoration:none}
+.substack-dialog-links a:hover{border-color:var(--rust);color:var(--rust)}
+@media(max-width:480px){.substack-dialog{padding:1.4rem}}
+
+.cover{margin:0 0 0;aspect-ratio:5/3;background:#2A1A12;overflow:hidden}
+.cover svg{width:100%;height:100%;display:block}
+.feat{background:var(--card);padding:clamp(1.6rem,5vw,3.5rem);margin:2rem 0 4rem}
+.feat .kick{display:flex;align-items:center;gap:1rem;color:var(--soft)}
+.feat .kick b{color:var(--rust);font-weight:500}.feat .kick i{width:56px;height:1px;background:var(--rust)}
+.feat h2{font-size:clamp(2.2rem,5.5vw,3.6rem);margin:1.6rem 0 1.4rem}
+.feat p{font:400 clamp(1.3rem,2.6vw,1.7rem)/1.65 "Cormorant Garamond",serif;color:var(--soft);margin:0;max-width:40rem}
+.feat p::first-letter{float:left;font-size:5.4rem;line-height:.8;padding:.4rem .8rem 0 0;color:var(--rust)}
+.feat .btns{margin-top:2rem}
+
+.band{background:var(--band);color:var(--band-ink);overflow:hidden;white-space:nowrap;padding:1.7rem 0}
+.band div{display:inline-block;animation:roll 30s linear infinite;font:italic 400 1.9rem "Cormorant Garamond",serif}
+.band span{margin:0 1.6rem}.band s{color:#C4572F;text-decoration:none;font-style:normal}
+@keyframes roll{to{transform:translateX(-50%)}}
+
+section{padding:5rem 0 1rem}
+.kicker{color:var(--soft);margin-bottom:1.4rem}
+h2.big{font-size:clamp(2.6rem,7vw,4.4rem)}
+.tabs{display:flex;flex-wrap:wrap;gap:.4rem .6rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.4rem 0;margin:2.2rem 0 0}
+.tabs button{font:inherit;cursor:pointer;background:none;border:0;color:var(--soft);padding:.8rem 1.4rem;border-radius:999px}
+.tabs button span{color:var(--rust);margin-left:.5rem}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.entries{list-style:none;margin:0;padding:0}
+.entry{border-bottom:1px solid var(--line)}
+.entry a{display:grid;grid-template-columns:1fr auto;gap:.4rem 2rem;padding:2rem 0;text-decoration:none}
+.entry .c{color:var(--rust)}
+.entry h3{font-size:clamp(2rem,4.4vw,3rem);grid-column:1;margin:.4rem 0}
+.entry p{margin:0;color:var(--soft);max-width:34rem;grid-column:1}
+.entry .go{grid-column:2;grid-row:1/4;align-self:center;font:400 2.4rem "Cormorant Garamond",serif;color:var(--rust);transition:transform .2s}
+.entry a:hover h3{color:var(--rust)}.entry a:hover .go{transform:translate(4px,-4px)}
+.entry[hidden]{display:none}
+
+.desk{list-style:none;margin:2.2rem 0 0;padding:0;border-top:1px solid var(--ink)}
+.desk li{display:grid;grid-template-columns:8rem 1fr;gap:.3rem 2rem;padding:1.6rem 0;border-bottom:1px solid var(--line)}
+.desk .n{color:var(--rust)}
+.desk h3{font-size:clamp(1.9rem,4vw,2.6rem)}.desk p{margin:.3rem 0 0;color:var(--soft)}
+@media(max-width:640px){.desk li{grid-template-columns:1fr}}
+
+.about{background:var(--band);color:var(--band-ink);margin-top:5rem;padding:5rem 0 5.5rem}
+.about .kicker{color:#C4572F}
+.about h2{font-size:clamp(2.6rem,7vw,4.6rem);max-width:15ch}
+.about h2 em{color:var(--gold)}
+.def{color:var(--band-soft);margin:2rem 0 2.6rem;max-width:32rem;text-transform:none;letter-spacing:.04em;font-size:.95rem;line-height:1.7}
+.about p.body{font-size:1.3rem;line-height:1.75;max-width:38rem;margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:.6rem;list-style:none;padding:0;margin:2.4rem 0 0}
+.chips li{border:1px solid #4A423C;padding:.4rem 1rem;color:var(--band-soft)}
+
+footer{background:#0C0A09;color:#F5EFE6;padding:4rem 0 3rem}
+footer h2{font-size:clamp(2.4rem,6vw,4rem);max-width:14ch}
+footer h2 em{color:var(--gold)}
+footer .btn{border-color:#F5EFE6;color:#F5EFE6}footer .btn.fill{background:#F5EFE6;color:#1A1716}
+footer small{display:block;margin-top:3rem;color:#8F867C}
+@media(prefers-reduced-motion:reduce){.band div{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="date mono" id="date"></div>
+<header class="mast"><div class="wrap">
+  <a class="logo" href="#top" aria-label="Home">A</a><a class="brand" href="#top">Anushka Shrivastava</a>
+  <nav class="mono"><a href="#writings">Writings</a><a href="#desk">Desk</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+</div></header>
+
+<main id="top">
+<div class="wrap hero">
+  <div class="hero-title">
+    <h1>Words, Research &amp; Stories, <em>Written with Care</em></h1>
+    <img class="hero-image" src="The Writing Desk_ A Literary Still Life.png" alt="A warm literary writing desk with a typewriter, books, flowers and the title The Writing Desk" width="1672" height="941">
+  </div>
+  <p class="lede">Articles, YouTube scripts and essays on books, movies and ideas, each one researched properly and written to be finished.</p>
+  <div class="btns mono"><a class="btn fill" href="#writings">Read the writings</a><a class="btn" href="#contact">Get in touch</a></div>
+</div>
+
+<div class="wrap">
+  
+  <article class="feat">
+    <div class="kick mono"><b>Featured</b><i></i><span>Blog</span></div>
+    <h2>Literature Goofs</h2>
+    <p>Reading, rereading and writing back: my blog on books, movies, stories and the ideas that stay with me after the last page or frame.</p>
+    <div class="btns mono"><a class="btn fill" href="https://literaturegoofs.blogspot.com/?m=1" target="_blank" rel="noopener">Read the blog ↗</a></div>
+  </article>
+</div>
+
+<div class="band" aria-hidden="true"><div>
+  <span>Content</span><s>●</s><span>Research</span><s>●</s><span>Scripts</span><s>●</s><span>Stories</span><s>●</s><span>Essays</span><s>●</s><span>Travel</span><s>●</s><span>Education</span><s>●</s>
+  <span>Content</span><s>●</s><span>Research</span><s>●</s><span>Scripts</span><s>●</s><span>Stories</span><s>●</s><span>Essays</span><s>●</s><span>Travel</span><s>●</s><span>Education</span><s>●</s>
+</div></div>
+
+<div class="wrap">
+  <section id="writings">
+    <div class="kicker mono">The Archive</div>
+    <h2 class="big">The Writings</h2>
+    <div class="tabs mono" role="group" aria-label="Filter writings">
+      <button aria-pressed="true" data-f="all">All<span></span></button>
+      <button aria-pressed="false" data-f="blog">Blog<span></span></button>
+      <button aria-pressed="false" data-f="newsletter">Newsletter<span></span></button>
+      <button aria-pressed="false" data-f="notes">Notes<span></span></button>
+    </div>
+    <ul class="entries">
+      <li class="entry" data-c="blog"><a href="https://literaturegoofs.blogspot.com/?m=1" target="_blank" rel="noopener"><span class="c mono">Blog</span><h3>Literature Goofs</h3><p>Stories, books and the ideas hiding inside them.</p><span class="go" aria-hidden="true">↗</span></a></li>
+      <li class="entry" data-c="newsletter"><a href="https://substack.com/@anushkashrivastava" target="_blank" rel="noopener"><span class="c mono">Newsletter</span><h3>On Substack</h3><p>Longer essays, written slowly and sent to your inbox.</p><span class="go" aria-hidden="true">↗</span></a></li>
+      <li class="entry" data-c="notes"><a href="https://x.com/shrianushka12" target="_blank" rel="noopener"><span class="c mono">Notes</span><h3>On X</h3><p>Short thoughts and early ideas, before they become articles.</p><span class="go" aria-hidden="true">↗</span></a></li>
+    </ul>
+  </section>
+
+  <section id="desk">
+    <div class="kicker mono">The Desk</div>
+    <h2 class="big">Where I’ve Worked</h2>
+    <ul class="desk">
+      <li><span class="n mono">Web</span><div><h3>Indianespace.com</h3><p>Content writer. Web content.</p></div></li>
+      <li><span class="n mono">Web</span><div><h3>TopIndiaHolidays</h3><p>Content writer. Travel content.</p></div></li>
+      <li><span class="n mono">Web</span><div><h3>Collegedunia</h3><p>Content writer. Education content.</p></div></li>
+      <li><span class="n mono">Screen</span><div><h3>Layered</h3><p>Scripts and research for the YouTube channel.</p></div></li>
+      <li><span class="n mono">Screen</span><div><h3>Prateek Express</h3><p>Scripts and research for the YouTube channel.</p></div></li>
+    </ul>
+  </section>
+</div>
+
+<section class="about" id="about"><div class="wrap">
+  <div class="kicker mono">About the Writer</div>
+  <h2>A writer who <em>researches</em> before she writes.</h2>
+  <p class="def mono">Portfolio (n.) — a collection of work, kept to show what it can do.</p>
+  <p class="body">Anushka Shrivastava is a content writer and researcher. She writes for websites and YouTube channels, and on her own blog and newsletter she writes about books and ideas. Her work moves between travel, education, storytelling and culture.</p>
+  <ul class="chips mono"><li>Web articles</li><li>YouTube scripts</li><li>Research</li><li>Blogging</li><li>Newsletters</li><li>Proofreading</li></ul>
+</div></section>
+</main>
+
+<footer id="contact"><div class="wrap">
+  <div class="kicker mono" style="color:#C4572F;margin-bottom:1.4rem">Contact</div>
+  <h2>Have something worth <em>saying?</em></h2>
+  <p style="color:#B5ACA0;max-width:32rem;margin:1.4rem 0 0">Tell me about your project and your readers.</p>
+  <div class="btns mono"><a class="btn fill" href="https://substack.com/@anushkashrivastava" target="_blank" rel="noopener" data-substack-popup aria-haspopup="dialog">Message on Substack</a><a class="btn" href="https://x.com/shrianushka12" target="_blank" rel="noopener">DM on X</a><a class="btn fill" href="https://substack.com/@anushkashrivastava" target="_blank" rel="noopener">Email me</a></div>
+  <small class="mono">© 2026 Anushka Shrivastava</small>
+</div></footer>
+
+<dialog class="substack-dialog" id="substack-dialog" aria-labelledby="substack-dialog-title">
+  <div class="substack-dialog-head">
+    <div><p class="mono" style="margin:0 0 .5rem;color:var(--rust)">Substack</p><h2 id="substack-dialog-title">Choose a publication</h2></div>
+    <button class="substack-dialog-close" type="button" aria-label="Close" data-close-substack>&times;</button>
+  </div>
+  <div class="substack-dialog-links">
+    <a href="https://substack.com/@anushkashrivastava" target="_blank" rel="noopener"><span>@anushkashrivastava</span><span aria-hidden="true">↗</span></a>
+    <a href="https://substack.com/@versecasescenario1?utm_source=share&amp;utm_medium=android&amp;r=89zowf" target="_blank" rel="noopener"><span>@versecasescenario1</span><span aria-hidden="true">↗</span></a>
+  </div>
+</dialog>
+
+<script>
+try{var d=new Date(),h=d.getHours();
+document.getElementById('date').textContent=d.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'})+' · '+(h<12?'Morning':h<17?'Afternoon':'Evening')+' Edition';}catch(e){}
+var substackDialog=document.getElementById('substack-dialog');
+document.querySelectorAll('[data-substack-popup]').forEach(function(link){link.addEventListener('click',function(event){
+  if(substackDialog&&typeof substackDialog.showModal==='function'){event.preventDefault();substackDialog.showModal();}});});
+document.querySelector('[data-close-substack]').addEventListener('click',function(){substackDialog.close();});
+substackDialog.addEventListener('click',function(event){if(event.target===substackDialog)substackDialog.close();});
+document.querySelectorAll('.tabs button').forEach(function(b){b.addEventListener('click',function(){
+  document.querySelectorAll('.tabs button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+  document.querySelectorAll('.entry').forEach(function(e){e.hidden=!(b.dataset.f==='all'||e.dataset.c===b.dataset.f)});});});
+</script>
+</body>
+</html>
