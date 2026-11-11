@@ -49,6 +49,16 @@ h1 em{color:var(--rust);font-weight:400}
 .substack-dialog-links a:hover{border-color:var(--rust);color:var(--rust)}
 @media(max-width:480px){.substack-dialog{padding:1.4rem}}
 
+.insta-dialog{width:min(440px,calc(100% - 2rem));max-width:none;padding:2rem;border:1px solid var(--line);background:var(--bg);color:var(--ink);box-shadow:0 20px 70px rgba(0,0,0,.3)}
+.insta-dialog::backdrop{background:rgba(12,10,9,.68)}
+.insta-dialog-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.insta-dialog h2{font-size:2.4rem}
+.insta-dialog-close{border:0;background:none;color:var(--ink);font:inherit;font-size:1.8rem;line-height:1;cursor:pointer}
+.insta-dialog-links{display:grid;gap:.7rem;margin-top:1.5rem}
+.insta-dialog-links a{display:flex;justify-content:space-between;gap:1rem;padding:1rem;border:1px solid var(--line);text-decoration:none}
+.insta-dialog-links a:hover{border-color:var(--rust);color:var(--rust)}
+@media(max-width:480px){.substack-dialog{padding:1.4rem}}
+
 .cover{margin:0 0 0;aspect-ratio:5/3;background:#2A1A12;overflow:hidden}
 .cover svg{width:100%;height:100%;display:block}
 .feat{background:var(--card);padding:clamp(1.6rem,5vw,3.5rem);margin:2rem 0 4rem}
@@ -148,9 +158,12 @@ footer small{display:block;margin-top:3rem;color:#8F867C}
     </div>
     <ul class="entries">
       <li class="entry" data-c="blog"><a href="https://literaturegoofs.blogspot.com/?m=1" target="_blank" rel="noopener"><span class="c mono">Blog</span><h3>Literature Goofs</h3><p>Stories, books and the ideas hiding inside them.</p><span class="go" aria-hidden="true">↗</span></a></li>
-      <li class="entry" data-c="newsletter"><a href="https://substack.com/@anushkashrivastava" target="_blank" rel="noopener"><span class="c mono">Newsletter</span><h3>On Substack</h3><p>Longer essays, written slowly and sent to your inbox.</p><span class="go" aria-hidden="true">↗</span></a></li>
+      <li class="entry" data-c="newsletter"><a href="https://substack.com/@anushkashrivastava" target="_blank" rel="noopener" data-substack-popup aria-haspopup="dialog"><span class="c mono">Newsletter</span><h3>On Substack</h3><p>Longer essays, written slowly and sent to your inbox.</p><span class="go" aria-hidden="true">↗</span></a></li>
       <li class="entry" data-c="notes"><a href="https://x.com/shrianushka12" target="_blank" rel="noopener"><span class="c mono">Notes</span><h3>On X</h3><p>Short thoughts and early ideas, before they become articles.</p><span class="go" aria-hidden="true">↗</span></a></li>
-    </ul>
+	  <li class="entry" data-c="notes"><a href="https://x.com/shrianushka12" target="_blank" rel="noopener" data-insta-popup aria-haspopup="dialog"><span class="c mono">Work in Progress...</span><h3>On Instagram</h3><p>Everything and anything that interests me.</p><span class="go" aria-hidden="true">↗</span></a></li>
+      <li class="entry" data-c="notes"><a href="https://youtube.com/@versecasescenario-t1g?si=8t-_mqzKNelcp6YG" target="_blank" rel="noopener"><span class="c mono">Work in Progress...</span><h3>On Youtube</h3><p>Literature, Philosophy & Stories
+.</p><span class="go" aria-hidden="true">↗</span></a></li>
+	</ul>
   </section>
 
   <section id="desk">
@@ -194,6 +207,18 @@ footer small{display:block;margin-top:3rem;color:#8F867C}
   </div>
 </dialog>
 
+<dialog class="insta-dialog" id="insta-dialog" aria-labelledby="insta-dialog-title">
+  <div class="insta-dialog-head">
+    <div><p class="mono" style="margin:0 0 .5rem;color:var(--rust)">Instagram Handles</p><h2 id="insta-dialog-title">Choose a page.</h2></div>
+    <button class="insta-dialog-close" type="button" aria-label="Close" data-close-insta>&times;</button>
+  </div>
+  <div class="insta-dialog-links">
+    <a href="https://www.instagram.com/fashionush12?utm_source=qr&xtok=d3djOWppMDF2NGZl" target="_blank" rel="noopener"><span>@FASHIONUSH12 <br>Fashion and Lifestyle</span><span aria-hidden="true">↗</span></a>
+    <a href="https://www.instagram.com/screenwriternush?utm_source=qr&srtk=MXhidTl0OTFjaHNkbg==" target="_blank" rel="noopener"><span>@SCREENWRITERNUSH <br> Movie reviews and my own written scripts</span><span aria-hidden="true">↗</span></a>
+	<a href="https://www.instagram.com/literaturenush?utm_source=qr&xtok=NWdxenVubnVnbDd3" target="_blank" rel="noopener"><span>@LITERATURENUSH <br> Novels and short stories</span><span aria-hidden="true">↗</span></a>
+    
+  </div>
+</dialog>
 <script>
 try{var d=new Date(),h=d.getHours();
 document.getElementById('date').textContent=d.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'})+' · '+(h<12?'Morning':h<17?'Afternoon':'Evening')+' Edition';}catch(e){}
@@ -205,6 +230,17 @@ substackDialog.addEventListener('click',function(event){if(event.target===substa
 document.querySelectorAll('.tabs button').forEach(function(b){b.addEventListener('click',function(){
   document.querySelectorAll('.tabs button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
   document.querySelectorAll('.entry').forEach(function(e){e.hidden=!(b.dataset.f==='all'||e.dataset.c===b.dataset.f)});});});
+  
+  
+var instaDialog=document.getElementById('insta-dialog');
+document.querySelectorAll('[data-insta-popup]').forEach(function(link){link.addEventListener('click',function(event){
+  if(instaDialog&&typeof instaDialog.showModal==='function'){event.preventDefault();instaDialog.showModal();}});});
+document.querySelector('[data-close-insta]').addEventListener('click',function(){instaDialog.close();});
+instaDialog.addEventListener('click',function(event){if(event.target===instaDialog)instaDialog.close();});
+document.querySelectorAll('.tabs button').forEach(function(b){b.addEventListener('click',function(){
+  document.querySelectorAll('.tabs button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+  document.querySelectorAll('.entry').forEach(function(e){e.hidden=!(b.dataset.f==='all'||e.dataset.c===b.dataset.f)});});});
 </script>
 </body>
 </html>
+
